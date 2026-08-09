@@ -1,1 +1,36 @@
+name: 每日天气数据抓取
 
+on:
+  schedule:
+    # UTC 时间 00:00 == 马来西亚时间 (UTC+8) 08:00
+    - cron: "0 0 * * *"
+  workflow_dispatch: {}  # 允许手动在 Actions 页面点击运行，方便测试
+
+permissions:
+  contents: write  # 需要写权限，才能把新数据提交回仓库
+
+jobs:
+  fetch-weather:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取仓库代码
+        uses: actions/checkout@v4
+
+      - name: 设置 Python 环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 安装依赖
+        run: pip install -r requirements.txt
+
+      - name: 抓取天气数据
+        run: python fetch_weather.py
+
+      - name: 提交并推送更新的数据文件
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/weather_history.csv
+          git diff --staged --quiet || git commit -m "自动更新天气数据 $(date -u +'%Y-%m-%d')"
+          git push
