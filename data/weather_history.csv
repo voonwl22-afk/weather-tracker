@@ -66,3 +66,4 @@ fetched_at_utc,location,latitude,longitude,current_temperature_c,apparent_temper
 2026-10-13T06:29:01+00:00,"Bukit Mertajam, Penang, MY",5.3667,100.4667,28.7,34.5,78,0.4,6.1,80,30.4,25.2,3.8
 2026-10-14T04:30:03+00:00,"Bukit Mertajam, Penang, MY",5.3667,100.4667,29.9,36.8,71,0.8,7.9,81,31.2,25.2,9.3
 2026-10-15T04:12:47+00:00,"Bukit Mertajam, Penang, MY",5.3667,100.4667,31.4,39.5,67,0.0,2.6,0,32.3,25.5,10.1
+2026-10-16T04:08:37+00:00,"Bukit Mertajam, Penang, MY",5.3667,100.4667,31.0,39.6,70,0.0,0.8,2,31.8,25.0,14.4
